@@ -2,11 +2,36 @@
   "name": "electron-banking-system",
   "version": "1.0.0",
   "description": "Desktop Banking Management System using ElectronJS",
+  "author": "Imtiaz Dip <imtiazdip55@gmail.com>",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist:mac": "electron-builder --mac dmg",
+    "dist:win": "electron-builder --win nsis",
+    "dist:linux": "electron-builder --linux deb AppImage",
+    "dist:all": "electron-builder -mwl"
+  },
+  "build": {
+    "appId": "com.findesk.banking",
+    "productName": "FinDesk Banking",
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "target": ["dmg"]
+    },
+    "win": {
+      "target": ["nsis"]
+    },
+    "linux": {
+      "target": ["deb", "AppImage"]
+    }
   },
   "devDependencies": {
-    "electron": "^45.4.1"
+    "electron": "^45.4.1",
+    "electron-builder": "^26.18.0"
+  },
+  "allowScripts": {
+    "electron-winstaller@5.4.0": true
   }
 }
